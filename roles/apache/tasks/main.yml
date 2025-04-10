@@ -1,8 +1,9 @@
 - name: Installing Apache Web Server
   ansible.builtin.apt:
-  - name: apache
+    name: apache2
     state: present
-- name: Starting httpd Service
+    update_cache: true
+- name: Starting and Enabling httpd Service
   ansible.builtin.service:
     name: apache2
     state: started

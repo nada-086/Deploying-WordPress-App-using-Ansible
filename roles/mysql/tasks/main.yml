@@ -1,0 +1,20 @@
+- name: Installing MySQL Database
+  ansible.builtin.apt:
+    name: mysql-server
+    state: present
+    update_cache: true
+- name: Starting and Enabling MySQL Server
+  ansible.builtin.service:
+    name: mysql
+    state: started
+    enabled: true
+- name: Creating WordPress Database
+  community.mysql.mysql_db:
+    name: wordpress
+    state: present
+- name: Creating MySQL User for WordPress
+  community.mysql.mysql_user:
+    name: wp_user
+    password: wp_pass
+    priv: 'wordpress.*:ALL'
+    state: present
