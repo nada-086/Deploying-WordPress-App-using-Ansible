@@ -1,0 +1,7 @@
+- hosts: web-servers
+  become: true
+  roles:
+    - apache
+    - mysql
+    - php
+    - wordpress
