@@ -4,5 +4,6 @@
       - php
       - php-mysql
       - libmysqlclient-dev
+      - python3-pip
     state: present
     update_cache: true

@@ -1,0 +1,29 @@
+- name: Download WordPress using curl (fallback)
+  command: curl -L https://wordpress.org/latest.tar.gz -o /tmp/wordpress.tar.gz
+  args:
+    creates: /tmp/wordpress.tar.gz
+
+- name: Extract WordPress
+  unarchive:
+    src: /tmp/wordpress.tar.gz
+    dest: /var/www/html/
+    remote_src: yes
+    creates: /var/www/html/wordpress
+
+- name: Copy wp-config file
+  template:
+    src: wp-config.php.j2
+    dest: /var/www/html/wordpress/wp-config.php
+
+- name: Set permissions
+  file:
+    path: /var/www/html/wordpress
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted
