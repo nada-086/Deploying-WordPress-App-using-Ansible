@@ -1,7 +1,6 @@
-- name: Download WordPress using curl (fallback)
-  command: curl -L https://wordpress.org/latest.tar.gz -o /tmp/wordpress.tar.gz
-  args:
-    creates: /tmp/wordpress.tar.gz
+- name: Installing Wordpress using wget
+  command: wget https://wordpress.org/latest.tar.gz
+  command: mv latest.tar.gz /tmp/wordpress.tar.gz
 
 - name: Extract WordPress
   unarchive:
