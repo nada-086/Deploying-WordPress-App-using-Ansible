@@ -73,3 +73,6 @@ These are the default settings hardcoded in the playbook:
 - Apache will serve WordPress from `/var/www/html/wordpress`.
 - File ownership is set to `www-data` for proper web access.
 - MySQL user and database are created automatically.
+
+## Application is Up
+![Wordpress Setup](./imgs/wordpress.png)
